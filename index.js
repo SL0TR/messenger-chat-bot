@@ -1,4 +1,6 @@
 'use strict';
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
 
 // Imports dependencies and set up http server
 const
@@ -12,7 +14,7 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
- 
+
   let body = req.body;
 
   // Checks this is an event from a page subscription
@@ -23,8 +25,13 @@ app.post('/webhook', (req, res) => {
 
       // Gets the message. entry.messaging is an array, but 
       // will only ever contain one message, so we get index 0
+      // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+
+      // Get the sender PSID
+      let sender_psid = webhook_event.sender.id;
+      console.log('Sender PSID: ' + sender_psid);
     });
 
     // Returns a '200 OK' response to all requests
@@ -40,7 +47,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "HIO7eLI35k"
+  const VERIFY_TOKEN = "HIO7eLI35k"
     
   // Parse the query params
   let mode = req.query['hub.mode'];
@@ -63,3 +70,21 @@ app.get('/webhook', (req, res) => {
     }
   }
 });
+
+PAGE_ACCESS_TOKEN ="EAAOpitAAXjMBACpm8YW8ZB9oYoY1GcZBlIrSbQ6wogmqcZCZCMQy70NfCaZAE2HrMcKEqkmtWUIrGqLZBPPqj8UdA0YEm2tn7Qro1ArDsy7i2NrSMtX4Epm6M9rhS37uGJoy7XV4zbqQyIKhldqnWKSMoWx0c8RdgdwpppUSnqtgZDZD"
+
+
+// Handles messages events
+function handleMessage(sender_psid, received_message) {
+
+}
+
+// Handles messaging_postbacks events
+function handlePostback(sender_psid, received_postback) {
+
+}
+
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  
+}
