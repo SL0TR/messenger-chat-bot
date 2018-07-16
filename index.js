@@ -87,13 +87,15 @@ function handleMessage(sender_psid, received_message) {
   let response;
 
   // Check if the message contains text
-  if (received_message.text) {    
-    console.log(received_message.nlp.entities);
+  if (received_message.text) {
     // Create the payload for a basic text message
-    let obj = JSON.stringify(received_message);
-    response = {
-      "text": `Your message entities "${obj}".`
+    let intent = JSON.stringify(received_message.nlp.entities.intent.value);
+    if (intent === 'greeting') {
+      response = {
+        "text": `I'm doing good. How can I help you?".`
+      }
     }
+    
   }  else if (received_message.attachments) {
   
     // Gets the URL of the message attachment
