@@ -89,9 +89,9 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
 
-    console.log(received_message.entities);
+    console.log(received_message.nlp);
 
-    if (received_message.entities) {
+    if (received_message.nlp) {
       let intent = received_message.nlp.entities.intent[0].value;
 
       if (intent === 'greeting')  {
