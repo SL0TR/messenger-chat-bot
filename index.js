@@ -91,7 +91,7 @@ function handleMessage(sender_psid, received_message) {
     console.log(received_message.nlp.entities);
     // Create the payload for a basic text message
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+      "text": `Your message entities "${received_message.nlp.entities}".`
     }
   }  else if (received_message.attachments) {
   
