@@ -88,11 +88,14 @@ function handleMessage(sender_psid, received_message) {
   let response;
 
   // Check if the message contains text
-  if (received_message.text) {    
-    console.log(received_message.text);
-    // Create the payload for a basic text message
+  if (received_message.text === 'Are you skynet?') {    
+    // console.log(received_message.text);
+    // // Create the payload for a basic text message
+    // response = {
+    //   "text": `You sent the message: "${received_message.text}". Now send me an image!`
+    // }
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+      "text": "Yes, I am SKYNET. :)"
     }
   }  else if (received_message.attachments) {
   
