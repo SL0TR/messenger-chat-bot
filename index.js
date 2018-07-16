@@ -96,7 +96,32 @@ function handleMessage(sender_psid, received_message) {
 
       if (intent === 'greeting' && confidence > 0.8)  {
         response = {
-          "text": `Hi, how can I help you?`
+          "text": "Hi, how can I help you?"
+        }
+      } else if (intent === 'account' && confidence > 0.8) {
+        response = {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "generic",
+              "elements": [{
+                "title": "Do you wish to open an account?",
+                "subtitle": "Tap a button to answer.",
+                "buttons": [
+                  {
+                    "type": "postback",
+                    "title": "Yes!",
+                    "payload": "yes",
+                  },
+                  {
+                    "type": "postback",
+                    "title": "No!",
+                    "payload": "no",
+                  }
+                ],
+              }]
+            }
+          }
         }
       } else {
         response = {
