@@ -94,15 +94,15 @@ function handleMessage(sender_psid, received_message) {
     if (received_message.entities) {
       let intent = received_message.nlp.entities.intent[0].value;
 
-      if (intent === undefined)  {
+      if (intent === 'greeting')  {
         response = {
-          "text": "Sorry, Couldn't Understand you"
+          "text": `Hi, How can I help you?`
         }
       }
     }
     
     response = {
-      "text": `Hi, How can I help you?`
+      "text": "Sorry, Couldn't Understand you"
     }
     
   }  else if (received_message.attachments) {
