@@ -90,8 +90,9 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     console.log(received_message.nlp.entities);
     // Create the payload for a basic text message
+    let obj = JSON.stringify(received_message.nlp);
     response = {
-      "text": `Your message entities "${received_message.nlp.entities.intent.value}".`
+      "text": `Your message entities "${obj}".`
     }
   }  else if (received_message.attachments) {
   
