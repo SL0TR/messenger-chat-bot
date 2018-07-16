@@ -91,7 +91,7 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message
     let intent = JSON.stringify(received_message);
     response = {
-      "text": `I'm doing good. ${intent} How can I help you?".`
+      "text": `${intent}`
     }
     
   }  else if (received_message.attachments) {
