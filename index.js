@@ -89,7 +89,7 @@ function handleMessage(sender_psid, received_message) {
 
   // Check if the message contains text
   if (received_message.text) {    
-
+    console.log(received_message.text);
     // Create the payload for a basic text message
     response = {
       "text": `You sent the message: "${received_message.text}". Now send me an image!`
@@ -123,11 +123,12 @@ function handleMessage(sender_psid, received_message) {
         }
       }
     }
-  } else if (received_message.text === 'Arigatou!') {
-    response = {
-      "text": "Konoyaro Bakayaro!"
-    }
-  }
+  } 
+  // else if (received_message.text === 'Arigatou!') {
+  //   response = {
+  //     "text": "Konoyaro Bakayaro!"
+  //   }
+  // }
   
   // Sends the response message
   callSendAPI(sender_psid, response);    
