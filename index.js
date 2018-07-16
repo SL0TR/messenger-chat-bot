@@ -90,21 +90,22 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {
 
     if (received_message.nlp.entities.hasOwnProperty('intent')) {
+
       let intent = received_message.nlp.entities.intent[0].value;
       let confidence = received_message.nlp.entities.intent[0].confidence;
 
       if (intent === 'greeting' && confidence > 0.8)  {
         response = {
-          "text": `Hi, How can I help you?`
+          "text": `Hi, how can I help you?`
         }
       } else {
         response = {
-          "text": "Sorry, Couldn't Understand you"
+          "text": "Sorry, couldn't understand you"
         }
       }
     } else {
       response = {
-        "text": "Sorry, Couldn't Understand you"
+        "text": "Sorry, couldn't understand you"
       }
     }
     
