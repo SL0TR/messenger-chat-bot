@@ -89,9 +89,7 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
 
-    console.log(received_message.nlp);
-
-    if (received_message.nlp) {
+    if (received_message.nlp.entities.hasOwnProperty('intent')) {
       let intent = received_message.nlp.entities.intent[0].value;
 
       if (intent === 'greeting')  {
@@ -99,10 +97,10 @@ function handleMessage(sender_psid, received_message) {
           "text": `Hi, How can I help you?`
         }
       }
-    }
-    
-    response = {
-      "text": "Sorry, Couldn't Understand you"
+    } else {
+      response = {
+        "text": "Sorry, Couldn't Understand you"
+      }
     }
     
   }  else if (received_message.attachments) {
