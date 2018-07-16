@@ -94,12 +94,11 @@ function handleMessage(sender_psid, received_message) {
       response = {
         "text": `Hi, How can I help you?`
       }
-    } else {
-      response = {
-        "text": "Sorry, Couldn't Understand you"
-      }
     }
 
+    response = {
+      "text": "Sorry, Couldn't Understand you"
+    }
     
     
   }  else if (received_message.attachments) {
