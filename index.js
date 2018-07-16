@@ -96,9 +96,7 @@ function handleMessage(sender_psid, received_message) {
       response = {
         "text": "Sorry, Couldn't Understand you"
       }
-    }
-
-     else if ( intent === 'greeting') {
+    } else if ( intent === 'greeting') {
       response = {
         "text": `Hi, How can I help you?`
       }
