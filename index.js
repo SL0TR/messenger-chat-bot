@@ -90,10 +90,8 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {
     // Create the payload for a basic text message
     let intent = received_message.nlp.entities.intent.value;
-    if (intent === 'greeting') {
-      response = {
-        "text": `I'm doing good. How can I help you?".`
-      }
+    response = {
+      "text": `I'm doing good. ${intent} How can I help you?".`
     }
     
   }  else if (received_message.attachments) {
