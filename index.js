@@ -89,17 +89,20 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
 
-    // Create the payload for a basic text message
-    let intent = received_message.nlp.entities.intent[0].value;
+    console.log(received_message.entities);
 
-    if (intent === undefined)  {
-      response = {
-        "text": "Sorry, Couldn't Understand you"
+    if (received_message.entities) {
+      let intent = received_message.nlp.entities.intent[0].value;
+
+      if (intent === undefined)  {
+        response = {
+          "text": "Sorry, Couldn't Understand you"
+        }
       }
-    } else if ( intent === 'greeting') {
-      response = {
-        "text": `Hi, How can I help you?`
-      }
+    }
+    
+    response = {
+      "text": `Hi, How can I help you?`
     }
     
   }  else if (received_message.attachments) {
