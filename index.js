@@ -89,7 +89,7 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message
-    let intent = received_message.nlp.entities.intent.value;
+    let intent = received_message.nlp.entities.intent[0].value;
     response = {
       "text": `I'm doing good. ${intent} How can I help you?".`
     }
