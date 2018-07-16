@@ -91,8 +91,9 @@ function handleMessage(sender_psid, received_message) {
 
     if (received_message.nlp.entities.hasOwnProperty('intent')) {
       let intent = received_message.nlp.entities.intent[0].value;
+      let confidence = received_message.nlp.entities.intent[0].confidence;
 
-      if (intent === 'greeting')  {
+      if (intent === 'greeting' && confidence > 0.8)  {
         response = {
           "text": `Hi, How can I help you?`
         }
