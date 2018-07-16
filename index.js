@@ -123,6 +123,10 @@ function handleMessage(sender_psid, received_message) {
         }
       }
     }
+  } else if (received_message.text === 'Arigatou!') {
+    response = {
+      "text": "Konoyaro Bakayaro!"
+    }
   }
   
   // Sends the response message
