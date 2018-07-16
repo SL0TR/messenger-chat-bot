@@ -89,7 +89,7 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message
-    let intent = JSON.stringify(received_message);
+    let intent = received_message.nlp.entities.intent;
     response = {
       "text": `${intent}`
     }
