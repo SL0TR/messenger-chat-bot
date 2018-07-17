@@ -164,11 +164,7 @@ function handleMessage(sender_psid, received_message) {
       }
     }
   } 
-  // else if (received_message.text === 'Arigatou!') {
-  //   response = {
-  //     "text": "Konoyaro Bakayaro!"
-  //   }
-  // }
+
   
   // Sends the response message
   callSendAPI(sender_psid, response);    
@@ -183,9 +179,9 @@ function handlePostback(sender_psid, received_postback) {
 
   // Set the response based on the postback payload
   if (payload === 'yes') {
-    response = { "text": "Thanks!" }
+    response = { "text": "Okay, we'll proceed to the registraton'" }
   } else if (payload === 'no') {
-    response = { "text": "Oops, try sending another image." }
+    response = { "text": "Oh, do you want a specific set of commands to choose from?" }
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
