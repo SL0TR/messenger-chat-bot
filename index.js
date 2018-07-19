@@ -3,7 +3,7 @@ const express = require('express'),
 
 messengerWebbhookController = require('./controllers/messengerWebhook'),
 
-app = express().use(bodyParser.json());
+app = express();
 
 
 // Fire controllers
