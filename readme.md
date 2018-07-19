@@ -7,6 +7,7 @@ Tech stack
 * NodeJS(Express, ejs)
 * Wit.ai
 * jQuery
+* WebView
 
 To run the project locally install nodejs then type
 * `npm install`
