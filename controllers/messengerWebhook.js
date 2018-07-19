@@ -1,5 +1,6 @@
 'use strict';
-const PAGE_ACCESS_TOKEN = "EAAOpitAAXjMBACpm8YW8ZB9oYoY1GcZBlIrSbQ6wogmqcZCZCMQy70NfCaZAE2HrMcKEqkmtWUIrGqLZBPPqj8UdA0YEm2tn7Qro1ArDsy7i2NrSMtX4Epm6M9rhS37uGJoy7XV4zbqQyIKhldqnWKSMoWx0c8RdgdwpppUSnqtgZDZD";
+
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 
 // Imports dependencies and set up http server
