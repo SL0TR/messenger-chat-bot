@@ -2,8 +2,6 @@
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-console.log(PAGE_ACCESS_TOKEN);
-
 // Imports dependencies and set up http server
 const
   bodyParser = require('body-parser'),
