@@ -110,14 +110,25 @@ module.exports = (app) => {
                   "subtitle": "Tap a button to answer.",
                   "buttons": [
                     {
-                      "type": "postback",
-                      "title": "Yes!",
-                      "payload": "yes",
+                      "type":"web_url",
+                      "url":"https://mohaimin.herokuapp.com/form",
+                      "title":"WebView (small)",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "compact"
                     },
                     {
-                      "type": "postback",
-                      "title": "No!",
-                      "payload": "no",
+                      "type":"web_url",
+                      "url":"https://mohaimin.herokuapp.com/form",
+                      "title":"WebView (mid)",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall"
+                    },
+                    {
+                      "type":"web_url",
+                      "url":"https://mohaimin.herokuapp.com/form",
+                      "title":"WebView (large)",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "full"
                     }
                   ],
                 }]
@@ -212,5 +223,17 @@ module.exports = (app) => {
       }
     }); 
   }
+
+  app.get('/show-buttons', (req, res) => {
+    res.json({});
+  });
+
+  app.get('/get-webview', (req, res) => {
+    res.render('form');
+  });
+
+  app.post('/broadcast-to-chatbot', (req, res) => {
+     
+  })
 
 }
