@@ -1,4 +1,4 @@
-# [A Messenger Bot](https://todo-sl0tr.herokuapp.com/)
+# [A Messenger Bot](https://www.facebook.com/memewarsftw/)
 ## A Facebook Messenger bot integrated with wit.ai (Natural language Processing)
 
 Tech stack
