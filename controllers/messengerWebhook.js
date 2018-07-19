@@ -100,39 +100,21 @@ module.exports = (app) => {
             "text": "Hi, how can I help you?"
           }
         } else if (intent === 'account' && confidence > 0.8) {
+          let webUrl = 'https://mohaimin.herokuapp.com/form';
           response = {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "generic",
-                "elements": [{
-                  "title": "Do you wish to open an account?",
-                  "subtitle": "Tap a button to answer.",
-                  "buttons": [
-                    {
-                      "type":"web_url",
-                      "url":"https://mohaimin.herokuapp.com/form",
-                      "title":"WebView (small)",
-                      "messenger_extensions": true,
-                      "webview_height_ratio": "compact"
-                    },
-                    {
-                      "type":"web_url",
-                      "url":"https://mohaimin.herokuapp.com/form",
-                      "title":"WebView (mid)",
-                      "messenger_extensions": true,
-                      "webview_height_ratio": "tall"
-                    },
-                    {
-                      "type":"web_url",
-                      "url":"https://mohaimin.herokuapp.com/form",
-                      "title":"WebView (large)",
-                      "messenger_extensions": true,
-                      "webview_height_ratio": "full"
-                    }
-                  ],
-                }]
-              }
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+                    buttons: [{
+                        type: "web_url",
+                        url: webUrl,
+                        title: "Set preferences",
+                        webview_height_ratio: "compact",
+                        messenger_extensions: true
+                    }]
+                }
             }
           }
         } else {
