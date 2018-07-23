@@ -211,12 +211,19 @@ module.exports = (app) => {
     // Send the HTTP request to the Messenger Platform
     let url = "https://graph.facebook.com/v2.6/psid?access_token=PAGE_ACCESS_TOKEN"
 
-    fetch(url).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log(data);
-    }).catch(function() {
-      console.log("Booo");
+    // Send the HTTP request to the Messenger Platform
+    request({
+      "uri": url,
+      "qs": { "access_token": PAGE_ACCESS_TOKEN },
+      "method": "GET",
+      "json": request_body
+    }, (err, res, body) => {
+      if (!err) {
+        console.log(res);
+        console.log(body);
+      } else {
+        console.error("Unable to send message:" + err);
+      }
     });
 
   }
