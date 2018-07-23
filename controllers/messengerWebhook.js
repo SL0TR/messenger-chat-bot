@@ -227,8 +227,7 @@ module.exports = (app) => {
     "uri": "https://graph.facebook.com/v2.6/psid",
     "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "GET",
-    "json": request_body
-  }, (err, res, body) => {
+  }, (err, res) => {
     if (!err) {
       console.log(res);
       console.log(body);
