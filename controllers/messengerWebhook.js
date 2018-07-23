@@ -29,8 +29,6 @@ module.exports = (app) => {
         // will only ever contain one message, so we get index 0
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
-        var date = new Date();
-        console.log('Server time', date.getTime());
         console.log(webhook_event.timestamp);
 
         // Get the sender PSID
@@ -212,7 +210,7 @@ module.exports = (app) => {
 
   let getUserInfo = (psid) => {
     // Send the HTTP request to the Messenger Platform
-    let url = "https://graph.facebook.com/v2.6/psid?access_token=PAGE_ACCESS_TOKEN"
+    let url = "https://graph.facebook.com/v2.6/" + psid + "?access_token=" + PAGE_ACCESS_TOKEN;
 
     // Send the HTTP request to the Messenger Platform
     https.get(url, (resp) => {
