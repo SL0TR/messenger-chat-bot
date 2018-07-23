@@ -7,7 +7,9 @@ const
   bodyParser = require('body-parser'),
   request = require('request');
 
+let date = new Date();
 
+console.log(date);
 
 
 module.exports = (app) => {
@@ -86,7 +88,9 @@ module.exports = (app) => {
   function handleMessage(sender_psid, received_message) {
 
     let response;
-
+    console.log(received_message.timestamp);
+    console.log(received_message.recipient.id);
+    console.log(received_message.mid);
     // Check if the message contains text
     if (received_message.text) {
 
