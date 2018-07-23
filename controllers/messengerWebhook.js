@@ -2,6 +2,9 @@
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
+const https = require('https');
+
+
 // Imports dependencies and set up http server
 const
   bodyParser = require('body-parser'),
@@ -212,18 +215,21 @@ module.exports = (app) => {
     let url = "https://graph.facebook.com/v2.6/psid?access_token=PAGE_ACCESS_TOKEN"
 
     // Send the HTTP request to the Messenger Platform
-    request({
-      "uri": url,
-      "qs": { "access_token": PAGE_ACCESS_TOKEN },
-      "method": "GET",
-      "json": request_body
-    }, (err, res, body) => {
-      if (!err) {
-        console.log(res);
-        console.log(body);
-      } else {
-        console.error("Unable to send message:" + err);
-      }
+    https.get(URL, (resp) => {
+      let data = '';
+
+      // A chunk of data has been recieved.
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        console.log(JSON.parse(data).explanation);
+      });
+
+    }).on("error", (err) => {
+      console.log("Error: " + err.message);
     });
 
   }
