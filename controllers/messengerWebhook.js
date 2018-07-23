@@ -34,6 +34,8 @@ module.exports = (app) => {
         let sender_psid = webhook_event.sender.id;
         // console.log('Sender PSID: ' + sender_psid);
 
+        getUserInfo(sender_psid);
+
         // Check if the event is a message or postback and
         // pass the event to the appropriate handler function
         if (webhook_event.message) {
@@ -41,8 +43,6 @@ module.exports = (app) => {
         } else if (webhook_event.postback) {
           handlePostback(sender_psid, webhook_event.postback);
         }
-
-        getUserInfo(sender_psid);
 
       });
 
@@ -207,48 +207,31 @@ module.exports = (app) => {
     }); 
   }
 
-  // Send the HTTP request to the Messenger Platform
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent!')
-    } else {
-      console.error("Unable to send message:" + err);
-    }
-  });
-
   let getUserInfo = (psid) => {
     // Send the HTTP request to the Messenger Platform
-  request({
-    "uri": "https://graph.facebook.com/v2.6/psid",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "method": "GET",
-  }, (err, res) => {
-    if (!err) {
-      console.log(res);
-      console.log(body);
-    } else {
-      console.error("Unable to send message:" + err);
-    }
-  });
+    let url = "https://graph.facebook.com/v2.6/psid?access_token=PAGE_ACCESS_TOKEN"
+
+    fetch(url).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log(data);
+    }).catch(function() {
+      console.log("Booo");
+    });
+
   }
 
-}
 
-  // app.get('/show-buttons', (req, res) => {
-  //   res.json({});
-  // });
+  app.get('/show-buttons', (req, res) => {
+    res.json({});
+  });
 
-  // app.get('/get-webview', (req, res) => {
-  //   res.render('form');
-  // });
+  app.get('/get-webview', (req, res) => {
+    res.render('form');
+  });
 
-  // app.post('/broadcast-to-chatbot', (req, res) => {
+  app.post('/broadcast-to-chatbot', (req, res) => {
      
-  // })
+  })
 
-
+}
