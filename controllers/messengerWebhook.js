@@ -26,6 +26,8 @@ module.exports = (app) => {
         // will only ever contain one message, so we get index 0
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
+        var date = new Date();
+        console.log('Server time', date.getTime());
         console.log(webhook_event.timestamp);
 
         // Get the sender PSID
