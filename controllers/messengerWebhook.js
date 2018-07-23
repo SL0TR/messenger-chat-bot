@@ -84,7 +84,7 @@ module.exports = (app) => {
   function handleMessage(sender_psid, received_message) {
 
     let response;
-    let time = received_message.timestamp;
+    var time = received_message.timestamp;
     console.log(time);
     // Check if the message contains text
     if (received_message.text) {
