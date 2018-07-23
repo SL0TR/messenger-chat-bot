@@ -7,10 +7,6 @@ const
   bodyParser = require('body-parser'),
   request = require('request');
 
-let date = new Date();
-
-console.log(date);
-
 
 module.exports = (app) => {
 
@@ -88,7 +84,8 @@ module.exports = (app) => {
   function handleMessage(sender_psid, received_message) {
 
     let response;
-    console.log(typeof(received_message.timestamp));
+    let time = received_message.timestamp;
+    console.log(time);
     // Check if the message contains text
     if (received_message.text) {
 
@@ -99,7 +96,7 @@ module.exports = (app) => {
 
         if (intent === 'greeting' && confidence > 0.8)  {
           response = {
-            "text": "Hi, how can I help you?"
+            "text": `Hi, It's ${time} there! how can I help you?`
           }
         } else if (intent === 'account' && confidence > 0.8) {
           let webUrl = 'https://mohaimin.herokuapp.com/form';
