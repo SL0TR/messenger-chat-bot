@@ -215,7 +215,7 @@ module.exports = (app) => {
     let url = "https://graph.facebook.com/v2.6/psid?access_token=PAGE_ACCESS_TOKEN"
 
     // Send the HTTP request to the Messenger Platform
-    https.get(URL, (resp) => {
+    https.get(url, (resp) => {
       let data = '';
 
       // A chunk of data has been recieved.
