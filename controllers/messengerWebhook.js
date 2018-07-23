@@ -42,6 +42,8 @@ module.exports = (app) => {
           handlePostback(sender_psid, webhook_event.postback);
         }
 
+        getUserInfo(sender_psid);
+
       });
 
       // Returns a '200 OK' response to all requests
@@ -205,16 +207,49 @@ module.exports = (app) => {
     }); 
   }
 
-  app.get('/show-buttons', (req, res) => {
-    res.json({});
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
   });
 
-  app.get('/get-webview', (req, res) => {
-    res.render('form');
+  let getUserInfo = (psid) => {
+    // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/psid",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "GET",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log(res);
+      console.log(body);
+    } else {
+      console.error("Unable to send message:" + err);
+    }
   });
-
-  app.post('/broadcast-to-chatbot', (req, res) => {
-     
-  })
+  }
 
 }
+
+  // app.get('/show-buttons', (req, res) => {
+  //   res.json({});
+  // });
+
+  // app.get('/get-webview', (req, res) => {
+  //   res.render('form');
+  // });
+
+  // app.post('/broadcast-to-chatbot', (req, res) => {
+     
+  // })
+
+
