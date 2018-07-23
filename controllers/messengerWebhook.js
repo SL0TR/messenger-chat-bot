@@ -26,11 +26,11 @@ module.exports = (app) => {
         // will only ever contain one message, so we get index 0
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
-        console.log(webhook_event);
+        console.log(webhook_event.timestamp);
 
         // Get the sender PSID
         let sender_psid = webhook_event.sender.id;
-        console.log('Sender PSID: ' + sender_psid);
+        // console.log('Sender PSID: ' + sender_psid);
 
         // Check if the event is a message or postback and
         // pass the event to the appropriate handler function
@@ -84,8 +84,6 @@ module.exports = (app) => {
   function handleMessage(sender_psid, received_message) {
 
     let response;
-    var time = received_message.timestamp;
-    console.log(time);
     // Check if the message contains text
     if (received_message.text) {
 
@@ -96,7 +94,7 @@ module.exports = (app) => {
 
         if (intent === 'greeting' && confidence > 0.8)  {
           response = {
-            "text": `Hi, It's ${time} there! how can I help you?`
+            "text": `Hi, It's there! how can I help you?`
           }
         } else if (intent === 'account' && confidence > 0.8) {
           let webUrl = 'https://mohaimin.herokuapp.com/form';
