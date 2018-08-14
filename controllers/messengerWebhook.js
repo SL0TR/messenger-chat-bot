@@ -2,7 +2,7 @@
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-const https = require('https');
+// const https = require('https');
 
 
 // const axios = require('axios');
@@ -13,7 +13,6 @@ const https = require('https');
 // Imports dependencies and set up http server
 const
   bodyParser = require('body-parser'),
-  request = require('request'),
   axios = require('axios');
 
 
@@ -218,6 +217,7 @@ module.exports = (app) => {
     let url = "https://graph.facebook.com/" + psid + "?fields=first_name,last_name,profile_pic" + "&access_token=" + PAGE_ACCESS_TOKEN;
     console.log(url);
     // Send the HTTP request to the Messenger Platform
+  
     // https.get(url, (resp) => {
     //   let data = '';
 
@@ -237,15 +237,13 @@ module.exports = (app) => {
 
       axios.get(url)
       .then(response => {
-        console.log('response data', response.data);
+        let firstName = response.data.first_name,
+        lastName = response.data.last_name;
+        
+        console.log(firstName + ' ' + lastName);
       })
       .catch(error => {
         console.log(error);
-      });
-
-      request(url, (err, res, body) => {
-        if (err) { return console.log(err); }
-        console.log('body', body);
       });
 
   }
