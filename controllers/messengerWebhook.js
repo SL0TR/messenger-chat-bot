@@ -205,12 +205,12 @@ module.exports = (app) => {
       } else {
         console.error("Unable to send message:" + err);
       }
-    }); 
+    });
   }
 
   let getUserInfo = (psid) => {
     // Send the HTTP request to the Messenger Platform
-    let url = "https://graph.facebook.com/v2.6/" + psid + "?access_token=" + PAGE_ACCESS_TOKEN;
+    let url = "https://graph.facebook.com/v2.6/" + psid + "?fields=first_name,last_name,profile_pic" + "&access_token=" + PAGE_ACCESS_TOKEN;
     console.log(url);
     // Send the HTTP request to the Messenger Platform
     https.get(url, (resp) => {
