@@ -235,18 +235,16 @@ module.exports = (app) => {
     //   console.log("Error: " + err.message);
     // });
 
-      // axios.get(url)
-      // .then(response => {
-      //   console.log('response', response);
-      //   console.log('response data', response.data);
-      // })
-      // .catch(error => {
-      //   console.log(error);
-      // });
+      axios.get(url)
+      .then(response => {
+        console.log('response data', response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
       request(url, (err, res, body) => {
         if (err) { return console.log(err); }
-        console.log('response', res);
         console.log('body', body);
       });
 
