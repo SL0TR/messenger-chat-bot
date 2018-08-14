@@ -8,7 +8,7 @@ const https = require('https');
 // const axios = require('axios');
 
 
-const request = require('request');
+// const request = require('request');
 
 // Imports dependencies and set up http server
 const
