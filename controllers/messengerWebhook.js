@@ -5,6 +5,9 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const https = require('https');
 
 
+const axios = require('axios');
+
+
 // Imports dependencies and set up http server
 const
   bodyParser = require('body-parser'),
