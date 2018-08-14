@@ -208,7 +208,7 @@ module.exports = (app) => {
 
   let getUserInfo = (psid) => {
     // Send the HTTP request to the Messenger Platform
-    let url = "https://graph.facebook.com/" + psid + "?fields=first_name,last_name,profile_pic" + "&access_token=" + PAGE_ACCESS_TOKEN;
+    let url = "https://graph.facebook.com/" + psid + "?fields=first_name,last_name,timezone" + "&access_token=" + PAGE_ACCESS_TOKEN;
     console.log(url);
     // Send the HTTP request to the Messenger Platform
     // https.get(url, (resp) => {
@@ -231,7 +231,7 @@ module.exports = (app) => {
 
     request(url, (err, res, body) => {
       if (err) { return console.log(err); }
-      console.log(body.first_name + ' ' + body.last_name);
+      console.log(body);
     });
 
   }
