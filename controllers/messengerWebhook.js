@@ -218,36 +218,36 @@ module.exports = (app) => {
     let url = "https://graph.facebook.com/" + psid + "?fields=first_name,last_name,profile_pic" + "&access_token=" + PAGE_ACCESS_TOKEN;
     console.log(url);
     // Send the HTTP request to the Messenger Platform
-    https.get(url, (resp) => {
-      let data = '';
+    // https.get(url, (resp) => {
+    //   let data = '';
 
-      // A chunk of data has been recieved.
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
+    //   // A chunk of data has been recieved.
+    //   resp.on('data', (chunk) => {
+    //     data += chunk;
+    //   });
 
-      // The whole response has been received. Print out the result.
-      resp.on('end', () => {
-        console.log(data);
-      });
+    //   // The whole response has been received. Print out the result.
+    //   resp.on('end', () => {
+    //     console.log(data);
+    //   });
 
-    }).on("error", (err) => {
-      console.log("Error: " + err.message);
-    });
+    // }).on("error", (err) => {
+    //   console.log("Error: " + err.message);
+    // });
 
-      axios.get(url)
-      .then(response => {
-        console.log(response);
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      // axios.get(url)
+      // .then(response => {
+      //   console.log('response', response);
+      //   console.log('response data', response.data);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // });
 
       request(url, (err, res, body) => {
         if (err) { return console.log(err); }
-        console.log(res);
-        console.log(body);
+        console.log('response', res);
+        console.log('body', body);
       });
 
   }
