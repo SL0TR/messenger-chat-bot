@@ -229,9 +229,9 @@ module.exports = (app) => {
     // });
 
 
-    request(url, (err, res, body) => {
+    request(url, { json: true }, (err, res, body) => {
       if (err) { return console.log(err); }
-      console.log(body);
+      console.log(body.first_name);
     });
 
   }
