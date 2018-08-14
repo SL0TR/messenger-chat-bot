@@ -222,7 +222,7 @@ module.exports = (app) => {
 
       // The whole response has been received. Print out the result.
       resp.on('end', () => {
-        console.log(JSON.stringify(data));
+        console.log(data.last_name);
       });
 
     }).on("error", (err) => {
