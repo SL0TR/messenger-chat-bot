@@ -212,22 +212,31 @@ module.exports = (app) => {
     let url = "https://graph.facebook.com/" + psid + "?fields=first_name,last_name,profile_pic" + "&access_token=" + PAGE_ACCESS_TOKEN;
     console.log(url);
     // Send the HTTP request to the Messenger Platform
-    https.get(url, (resp) => {
-      let data = '';
+    // https.get(url, (resp) => {
+    //   let data = '';
 
-      // A chunk of data has been recieved.
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
+    //   // A chunk of data has been recieved.
+    //   resp.on('data', (chunk) => {
+    //     data += chunk;
+    //   });
 
-      // The whole response has been received. Print out the result.
-      resp.on('end', () => {
-        console.log(data.last_name);
-      });
+    //   // The whole response has been received. Print out the result.
+    //   resp.on('end', () => {
+    //     console.log(data.last_name);
+    //   });
 
-    }).on("error", (err) => {
-      console.log("Error: " + err.message);
-    });
+    // }).on("error", (err) => {
+    //   console.log("Error: " + err.message);
+    // });
+
+      axios.get(url)
+      .then(response => {
+        console.log(response.data.url);
+        console.log(response.data.explanation);
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
   }
 
