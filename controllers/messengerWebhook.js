@@ -5,8 +5,10 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const https = require('https');
 
 
-const axios = require('axios');
+// const axios = require('axios');
 
+
+const request = require('request');
 
 // Imports dependencies and set up http server
 const
@@ -232,13 +234,19 @@ module.exports = (app) => {
     //   console.log("Error: " + err.message);
     // });
 
-      axios.get(url)
-      .then(response => {
-        console.log(response.data.url);
-        console.log(response.data.explanation);
-      })
-      .catch(error => {
-        console.log(error);
+      // axios.get(url)
+      // .then(response => {
+      //   console.log(response.data.url);
+      //   console.log(response.data.explanation);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // });
+
+      request(url, { json: true }, (err, res, body) => {
+        if (err) { return console.log(err); }
+        console.log(body.url);
+        console.log(body.explanation);
       });
 
   }
